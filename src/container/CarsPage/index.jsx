@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import CarFiltersArea from '../../components/CarFiltersArea'
+import AvailableCarsArea from '../../components/AvailableCarsArea'
 import * as carsActions from '../../actions/cars'
 
 class CarsView extends React.Component {
@@ -30,6 +32,10 @@ class CarsView extends React.Component {
     return (
       <div>
         <Header />
+        <div className='container'>
+          <CarFiltersArea />
+          <AvailableCarsArea />
+        </div>
         <Footer />
       </div>
     )

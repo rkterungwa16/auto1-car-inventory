@@ -1,0 +1,91 @@
+.available-cars-container {
+  height: 20rem;
+  width: 75%;
+  padding: $m-size;
+  margin: $l-size;
+}
+
+.available-car {
+  width: 100%;
+  border: 0.2rem solid $light-grey;
+  margin-top: $m-size;
+  height: 13rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start
+}
+
+.available-car__img--container {
+  margin: $m-size;
+  width: 15%;
+  height: 80%;
+  background-color: $light-grey;
+}
+
+.available-car__details--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: $m-size;
+  width: 85%;
+}
+
+.available-car__details {
+  display: flex;
+  flex-direction: column;
+  margin: $m-size;
+  width: 100%;
+}
+
+.available-cars__top--text {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.available-cars__text--bold {
+  font-size: $l-size;
+  font-weight: bold;
+  width: 60%;
+}
+
+.available-cars__text--regular {
+  font-size: $l-size;
+  color: $dark-gray;
+  width: 60%;
+}
+
+.available-cars__text--margin {
+  margin-top: $m-size;
+  margin-bottom: $l-size;
+}
+
+.available-cars__dropdown {
+  font-size: $ml-size;
+}
+
+.available-cars__text {
+  text-align: start;
+  margin: 0;
+  color: $dark-gray;
+}
+.available-cars__text--medium {
+  font-size: $ml-size;
+}
+
+.available-cars__text--small {
+  font-size: $mm-size;
+}
+
+.available-cars__width--fourty {
+  width: 40%;
+}
+
+.available-cars__width--max {
+  width: 100%;
+}
+
+.available-cars__link {
+  text-decoration: none;
+  color: $orange;
+}

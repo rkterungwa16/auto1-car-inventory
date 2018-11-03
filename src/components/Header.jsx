@@ -14,7 +14,7 @@ const Header = (props) => (
       <a href='#myOrders' className='header__link'>My Orders</a>
       <a href='#Sell' className='header__link'>Sell</a>
       <a href='#icon' className='header__icon'>
-        <i class='fa fa-bars' />
+        <i className='fa fa-bars' />
       </a>
     </div>
   </div>
