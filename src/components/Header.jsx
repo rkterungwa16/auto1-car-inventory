@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../assets/logo.png'
 
 const Header = (props) => (
-  <div className='header' id='myTopnav'>
+  <div className='header'>
     <div className='header__left'>
       <img
         className='header__logo'

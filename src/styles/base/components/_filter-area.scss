@@ -1,7 +1,31 @@
 .filters-container {
-  height: 20rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 25rem;
   width: 30%;
   border: .2rem solid $light-grey;
   padding: $m-size;
   margin: $l-size;
+}
+
+.filters-container__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: start;
+}
+
+.filter__btn--container {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+
+.filter__text--medium {
+  font-size: $ml-size;
+}
+
+.filter__text--small {
+  font-size: $mm-size;
 }
