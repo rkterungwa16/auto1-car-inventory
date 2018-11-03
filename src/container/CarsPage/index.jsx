@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+// import Footer from '../../components/Footer'
 import CarFiltersArea from '../../components/CarFiltersArea'
 import AvailableCarsArea from '../../components/AvailableCarsArea'
 import * as carsActions from '../../actions/cars'
@@ -12,31 +12,34 @@ class CarsView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      modal: false
+      cars: []
     }
   }
 
   componentDidMount () {
-    // if (!this.props.tenants.tenants.length > 0 && !this.props.tenants.isGettingTenants) {
-    //   this.props.tenantsActions.getAllTenants()
-    // }
     this.props.carsActions.getAllCars()
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.cars.cars) {
+      this.setState({
+        cars: nextProps.cars.cars
+      })
+    }
+  }
+
   render () {
-    // let currentView
-    // if (currentTenantDashboardView === 'talent') {
-    //   currentView = <TenantList tenants={tenants} />
-    // }
-    console.log('props', this.props)
+    console.log('state', this.state)
+    const {
+      cars
+    } = this.state
     return (
       <div>
         <Header />
         <div className='container'>
           <CarFiltersArea />
-          <AvailableCarsArea />
+          <AvailableCarsArea cars={cars} />
         </div>
-        <Footer />
       </div>
     )
   }
