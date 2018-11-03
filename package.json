@@ -11,7 +11,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "remote-redux-devtools": "^0.5.13"
+    "remote-redux-devtools": "^0.5.13",
+    "sass-loader": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -76,7 +76,7 @@ export function checkHttpStatus (response) {
 }
 
 /**
- * Parse response json to object
+ * Parse response json to produce object
  * @param {Object} response Object from successful api call
  */
 export function parseJSON (response) {
@@ -90,4 +90,14 @@ export function parseJSON (response) {
     }
     resolve(response.json())
   })
+}
+
+export const handleError = (error) => {
+  const errorStatus = error.response ? error.response.status : 'Unknown Status'
+  const statusText = error.response ? error.response.statusText : 'An error occured'
+  const response = {
+    status: errorStatus,
+    statusText: statusText
+  }
+  return response
 }
