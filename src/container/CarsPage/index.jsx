@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import * as carsActions from '../../actions/cars'
 
 class CarsView extends React.Component {
@@ -29,6 +30,7 @@ class CarsView extends React.Component {
     return (
       <div>
         <Header />
+        <Footer />
       </div>
     )
   }
