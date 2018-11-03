@@ -29,7 +29,7 @@ function cars (state = initialState, action) {
     case FETCH_ALL_CARS_SUCCEEDED:
       return Object.assign({}, state, {
         isFetchingCars: false,
-        cars: action.payload.data,
+        cars: action.payload.cars,
         fetchingCarsError: null
       })
 
