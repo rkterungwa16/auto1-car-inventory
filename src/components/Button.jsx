@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Button = () => (
+const Button = (props) => (
   <button
     className='btn'
+    onClick={props.handleClick}
   >Filter</button>
 )
 

@@ -32,11 +32,11 @@ export function getCarsFailure (error) {
   }
 }
 
-export function getAllCars () {
+export function getAllCars (params) {
   return (dispatch) => {
     dispatch(getCarsRequest())
 
-    return getCarsApi()
+    return getCarsApi(params)
       .then((response) => {
         dispatch(getCarsSuccess(response))
         return true

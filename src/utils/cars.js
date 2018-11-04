@@ -1,7 +1,7 @@
 import { get, checkHttpStatus, parseJSON } from './fetch'
 
-export const getCarsApi = () => {
-  return get('get-cars')
+export const getCarsApi = (filterParams = null) => {
+  return get('get-cars', filterParams)
     .then(checkHttpStatus)
     .then(parseJSON)
     .catch(err => err)

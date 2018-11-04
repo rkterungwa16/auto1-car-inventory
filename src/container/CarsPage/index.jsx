@@ -16,7 +16,11 @@ class CarsView extends React.Component {
     this.state = {
       cars: [],
       colors: [],
-      manufacturers: []
+      manufacturers: [],
+      selectedColor: '',
+      selectedManufacturer: '',
+      selectedSortOrder: '',
+      selectedPage: 1
     }
   }
 
@@ -46,12 +50,39 @@ class CarsView extends React.Component {
     }
   }
 
+  getColorsFilterParams (color) {
+    this.setState({
+      selectedColor: color
+    })
+  }
+
+  getManufacturersFilterParams (manufacturer) {
+    this.setState({
+      selectedManufacturer: manufacturer
+    })
+  }
+
   formatDropdownData (data) {
     let formattedData = []
     if (data.length > 1) {
       formattedData = data.map((member) => member.name)
     }
     return formattedData
+  }
+
+  getFilteredCarList () {
+    const {
+      selectedColor,
+      selectedManufacturer,
+      selectedSortOrder,
+      selectedPage
+    } = this.state
+    this.props.carsActions.getAllCars({
+      manufacturer: selectedManufacturer,
+      color: selectedColor,
+      sort: selectedSortOrder,
+      page: selectedPage
+    })
   }
 
   render () {
@@ -65,7 +96,13 @@ class CarsView extends React.Component {
       <div>
         <Header />
         <div className='container'>
-          <CarFiltersArea colors={colors} manufacturers={this.formatDropdownData(manufacturers)} />
+          <CarFiltersArea
+            colors={colors}
+            manufacturers={this.formatDropdownData(manufacturers)}
+            getColorsFilterParams={this.getColorsFilterParams.bind(this)}
+            getFilteredCarList={this.getFilteredCarList.bind(this)}
+            getManufacturersFilterParams={this.getManufacturersFilterParams.bind(this)}
+          />
           <AvailableCarsArea cars={cars} />
         </div>
       </div>

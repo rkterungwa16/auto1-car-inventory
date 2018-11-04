@@ -18,6 +18,7 @@ export const paths = {
  * @return {Function} A function call of the appropriate api
  */
 function fetchBackend (endpoint, method, body, params) {
+  console.log('endpoint params', endpoint, params)
   const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
@@ -35,6 +36,8 @@ function fetchBackend (endpoint, method, body, params) {
     const paramsArray = Object.keys(params).map((key) => {
       return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
     })
+
+    console.log('params', params)
 
     url += `?${paramsArray.join('&')}`
   }
