@@ -1,8 +1,9 @@
 import { API_URL } from '../constants'
 
 export const paths = {
-  'get-cars': 'cars/',
-  'get-car': 'cars/'
+  'get-cars': 'cars',
+  'get-colors': 'colors',
+  'get-manufacturer': 'manufacturers'
 }
 
 /**

@@ -5,24 +5,32 @@ class Dropdown extends React.Component {
     super(props)
     this.state = {
       dropdownIsOpen: false,
-      selectedOption: [this.props.defaultDropdownTitle ? this.props.defaultDropdownTitle : '']
+      selectedOption: [this.props.defaultDropdownTitle ? this.props.defaultDropdownTitle : ''],
+      content: []
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.dropdownContent) {
+      this.setState({
+        content: nextProps.dropdownContent
+      })
     }
   }
 
   toggleList () {
     this.setState(prevState => ({
-      listOpen: !prevState.listOpen
+      dropdownIsOpen: !prevState.dropdownIsOpen
     }))
   }
 
   selectOption (tab) {
-    const prevState = this.state.categories
-    const state = prevState.map((value, index) => {
+    const {
+      content
+    } = this.state
+    const state = content.map((value, index) => {
       const selectedState = {
-        id: value.id,
-        title: value.title,
-        key: value.key,
-        value: value.title,
+        title: value,
         selected: tab === index ? !value.selected : false
       }
       return selectedState
@@ -33,7 +41,7 @@ class Dropdown extends React.Component {
       categories: state,
       selectedOption: selected
     })
-    this.fireChangeEvent({ value: selected[0].id, label: selected[0].title })
+    this.fireChangeEvent({ label: selected[0].title })
   }
 
   fireChangeEvent (currentSelected) {
@@ -44,15 +52,15 @@ class Dropdown extends React.Component {
 
   renderDropdownContents (contentValues) {
     const renderedList = contentValues.map((value, index) => (
-      <li
-        key={value.id}
+      <div
+        key={value}
         className={
           value.selected
-            ? 'anp-dropdown--option selected'
-            : 'anp-dropdown--option'
+            ? 'list__item selected'
+            : 'list__item'
         }
         onClick={() => { this.selectOption(index) }}
-      >{value.title}</li>
+      >{value}</div>
     ))
     return renderedList
   }
@@ -67,22 +75,25 @@ class Dropdown extends React.Component {
       selectedOption
     } = this.state
     return (
-      <div class='dropdown'>
+      <div className='dropdown'>
         <button
           className='dropdown__btn'
-          onClick={this.toggleList}
-        >Dropdown</button>
+          onClick={this.toggleList.bind(this)}
+        ><span>None</span><i className='fas fa-caret-down fa-2x' /></button>
         <span className='anp-dropdown--title'>
           { selectedOption[0].title }
         </span>
-        <div className='dropdown__content'>
-          <ul className='d-flex flex-column p-3'>
-            {
-              dropdownIsOpen
-                ? this.renderDropdownContents(dropdownContent)
-                : null
-            }
-          </ul>
+        <div
+          className={
+            dropdownContent
+              ? 'dropdown__content dropdown__content--show'
+              : 'dropdown__content'}
+        >
+          {
+            dropdownIsOpen
+              ? this.renderDropdownContents(dropdownContent)
+              : null
+          }
         </div>
       </div>
     )

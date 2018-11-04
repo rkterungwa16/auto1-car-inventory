@@ -1,4 +1,6 @@
 .dropdown__btn {
+  display: flex;
+  justify-content: space-between;
   background-color: $pure-white;
   color: $dark-gray;
   padding: $m-size;
@@ -6,4 +8,38 @@
   border: 0.2rem solid $light-grey;
   border-radius: .4rem;
   cursor: pointer;
+}
+
+.dropdown__content {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  background-color: $pure-white;
+  font-size: $ml-size;
+  padding: $s-size;
+  width: 100%;
+  z-index: 1;
+}
+
+.dropdown__content--show {
+  display: block
+}
+
+.dropdown__sort {
+  width: 50%;
+}
+
+.dropdown__list {
+  background-color: $pure-white;
+  font-size: $ml-size;
+  padding: $s-size;
+  border: 0.2rem solid $light-grey;
+  border-right: 0.2rem solid $light-grey;
+}
+
+.list__item {
+  padding: $xs-size;
+  border-bottom: 0.2rem solid $light-grey;
 }

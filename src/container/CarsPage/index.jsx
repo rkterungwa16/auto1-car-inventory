@@ -7,17 +7,23 @@ import Header from '../../components/Header'
 import CarFiltersArea from '../../components/CarFiltersArea'
 import AvailableCarsArea from '../../components/AvailableCarsArea'
 import * as carsActions from '../../actions/cars'
+import * as colorsActions from '../../actions/colors'
+import * as manufacturersActions from '../../actions/manufacturers'
 
 class CarsView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      cars: []
+      cars: [],
+      colors: [],
+      manufacturers: []
     }
   }
 
   componentDidMount () {
     this.props.carsActions.getAllCars()
+    this.props.colorsActions.getAllColors()
+    this.props.manufacturersActions.getAllManufacturers()
   }
 
   componentWillReceiveProps (nextProps) {
@@ -26,18 +32,40 @@ class CarsView extends React.Component {
         cars: nextProps.cars.cars
       })
     }
+
+    if (nextProps.colors.colors) {
+      this.setState({
+        colors: nextProps.colors.colors
+      })
+    }
+
+    if (nextProps.colors.colors) {
+      this.setState({
+        manufacturers: nextProps.manufacturers.manufacturers
+      })
+    }
+  }
+
+  formatDropdownData (data) {
+    let formattedData = []
+    if (data.length > 1) {
+      formattedData = data.map((member) => member.name)
+    }
+    return formattedData
   }
 
   render () {
-    console.log('state', this.state)
     const {
-      cars
+      cars,
+      manufacturers,
+      colors
     } = this.state
+
     return (
       <div>
         <Header />
         <div className='container'>
-          <CarFiltersArea />
+          <CarFiltersArea colors={colors} manufacturers={this.formatDropdownData(manufacturers)} />
           <AvailableCarsArea cars={cars} />
         </div>
       </div>
@@ -47,14 +75,18 @@ class CarsView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cars: state.cars
+    cars: state.cars,
+    colors: state.colors,
+    manufacturers: state.manufacturers
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    carsActions: bindActionCreators(carsActions, dispatch)
+    carsActions: bindActionCreators(carsActions, dispatch),
+    colorsActions: bindActionCreators(colorsActions, dispatch),
+    manufacturersActions: bindActionCreators(manufacturersActions, dispatch)
   }
 }
 

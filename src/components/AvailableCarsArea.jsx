@@ -2,14 +2,13 @@ import React from 'react'
 
 import AvailableCar from './AvailableCar'
 import Pagination from './Pagination'
+import Dropdown from './Dropdown'
 
 // Stock # 29839 - 107.613 KM - Petrol - Red
 // stockNumber mileage fuelType color
 class AvailableCarsArea extends React.Component {
   renderAvailableCars (cars) {
-    console.log('cars', cars)
     const renderedCars = cars.map((car) => {
-      console.log('one car', car.stockNumber)
       const {
         stockNumber,
         mileage,
@@ -19,6 +18,7 @@ class AvailableCarsArea extends React.Component {
       } = car
       return (
         <AvailableCar
+          key={stockNumber}
           stockNumber={stockNumber}
           mileage={mileage}
           fuelType={fuelType}
@@ -41,7 +41,9 @@ class AvailableCarsArea extends React.Component {
         </div>
         <div className='available-cars__top--text available-cars__text--margin'>
           <p className='available-cars__text available-cars__text--regular'>Showing 10 of 100 results</p>
-          <p className='available-cars__text available-cars__dropdown'>None</p>
+          <div className='dropdown__sort'>
+            <Dropdown />
+          </div>
         </div>
 
         {this.renderAvailableCars(cars)}

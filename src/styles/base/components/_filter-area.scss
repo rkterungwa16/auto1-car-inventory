@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  height: 25rem;
+  height: 28rem;
   width: 30%;
   border: .2rem solid $light-grey;
   padding: $m-size;
@@ -10,6 +10,7 @@
 }
 
 .filters-container__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -20,6 +21,7 @@
   justify-content: flex-end;
   display: flex;
   flex-direction: row;
+  margin: $m-size;
 }
 
 .filter__text--medium {
