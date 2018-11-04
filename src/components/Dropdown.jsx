@@ -66,9 +66,7 @@ class Dropdown extends React.Component {
   }
 
   fireChangeEvent (currentSelected) {
-    console.log('currently selected', currentSelected)
     if (currentSelected !== this.state.selectedOption && this.props.getFilterParams) {
-      console.log('currently selected====', currentSelected.label)
       this.props.getFilterParams(currentSelected.label)
     }
   }

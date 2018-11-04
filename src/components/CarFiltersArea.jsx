@@ -18,7 +18,6 @@ class CarFiltersArea extends React.Component {
               dropdownContent={colors}
               defaultDropdownTitle={{ title: 'All car colors' }}
               getFilterParams={this.props.getColorsFilterParams}
-              // onChange={filterSelected}
             />
           </div>
           <p className='filter__text--small'>Manufacturer</p>

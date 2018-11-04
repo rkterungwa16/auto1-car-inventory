@@ -4,8 +4,6 @@ import AvailableCar from './AvailableCar'
 import Pagination from './Pagination'
 import Dropdown from './Dropdown'
 
-// Stock # 29839 - 107.613 KM - Petrol - Red
-// stockNumber mileage fuelType color
 class AvailableCarsArea extends React.Component {
   renderAvailableCars (cars) {
     const renderedCars = cars.map((car) => {
@@ -42,7 +40,11 @@ class AvailableCarsArea extends React.Component {
         <div className='available-cars__top--text available-cars__text--margin'>
           <p className='available-cars__text available-cars__text--regular'>Showing 10 of 100 results</p>
           <div className='dropdown__sort'>
-            <Dropdown />
+            <Dropdown
+              dropdownContent={['None', 'Mileage - Ascending', 'Mileage - Descending']}
+              defaultDropdownTitle={{ title: 'None' }}
+              getFilterParams={this.props.getSortFilterParams}
+            />
           </div>
         </div>
 

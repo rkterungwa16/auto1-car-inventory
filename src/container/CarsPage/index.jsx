@@ -19,7 +19,7 @@ class CarsView extends React.Component {
       manufacturers: [],
       selectedColor: '',
       selectedManufacturer: '',
-      selectedSortOrder: '',
+      selectedSortOrder: 'None',
       selectedPage: 1
     }
   }
@@ -50,6 +50,12 @@ class CarsView extends React.Component {
     }
   }
 
+  getSortFilterParams (sortOrder) {
+    this.setState({
+      selectedSortOrder: sortOrder
+    })
+  }
+
   getColorsFilterParams (color) {
     this.setState({
       selectedColor: color
@@ -71,12 +77,24 @@ class CarsView extends React.Component {
   }
 
   getFilteredCarList () {
-    const {
+    let {
       selectedColor,
       selectedManufacturer,
       selectedSortOrder,
       selectedPage
     } = this.state
+
+    if (selectedSortOrder === 'None') {
+      selectedSortOrder = ''
+    }
+
+    if (selectedSortOrder === 'Mileage - Ascending') {
+      selectedSortOrder = 'asc'
+    }
+
+    if (selectedSortOrder === 'Mileage - Descending') {
+      selectedSortOrder = 'des'
+    }
     this.props.carsActions.getAllCars({
       manufacturer: selectedManufacturer,
       color: selectedColor,
@@ -103,7 +121,11 @@ class CarsView extends React.Component {
             getFilteredCarList={this.getFilteredCarList.bind(this)}
             getManufacturersFilterParams={this.getManufacturersFilterParams.bind(this)}
           />
-          <AvailableCarsArea cars={cars} />
+
+          <AvailableCarsArea
+            cars={cars}
+            getSortFilterParams={this.getSortFilterParams.bind(this)}
+          />
         </div>
       </div>
     )
