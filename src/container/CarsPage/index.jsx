@@ -20,7 +20,8 @@ class CarsView extends React.Component {
       selectedColor: '',
       selectedManufacturer: '',
       selectedSortOrder: 'None',
-      selectedPage: 1
+      selectedPage: 1,
+      totalPageCount: null
     }
   }
 
@@ -31,9 +32,11 @@ class CarsView extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    console.log('value of nextprops', nextProps)
     if (nextProps.cars.cars) {
       this.setState({
-        cars: nextProps.cars.cars
+        cars: nextProps.cars.cars,
+        totalPageCount: nextProps.cars.totalPageCount
       })
     }
 
@@ -50,9 +53,21 @@ class CarsView extends React.Component {
     }
   }
 
+  componentDidUpdate (provProps, prevState) {
+    if (prevState.selectedPage !== this.state.selectedPage) {
+      this.getFilteredCarList()
+    }
+  }
+
   getSortFilterParams (sortOrder) {
     this.setState({
       selectedSortOrder: sortOrder
+    })
+  }
+
+  getPageParams (page) {
+    this.setState({
+      selectedPage: page
     })
   }
 
@@ -107,9 +122,10 @@ class CarsView extends React.Component {
     const {
       cars,
       manufacturers,
-      colors
+      colors,
+      totalPageCount
     } = this.state
-
+    console.log('application state', this.state)
     return (
       <div>
         <Header />
@@ -124,7 +140,9 @@ class CarsView extends React.Component {
 
           <AvailableCarsArea
             cars={cars}
+            totalPageCount={totalPageCount}
             getSortFilterParams={this.getSortFilterParams.bind(this)}
+            getPageParams={this.getPageParams.bind(this)}
           />
         </div>
       </div>
@@ -135,6 +153,7 @@ class CarsView extends React.Component {
 const mapStateToProps = state => {
   return {
     cars: state.cars,
+    totalPageCount: state.cars.totalPageCount,
     colors: state.colors,
     manufacturers: state.manufacturers
   }

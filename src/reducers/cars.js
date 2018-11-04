@@ -10,6 +10,7 @@ import {
 const initialState = {
   isFetchingCars: false,
   cars: [],
+  totalPageCount: null,
   fetchingCarsError: null,
   isAddingCar: false,
   addingCarError: null,
@@ -30,6 +31,7 @@ function cars (state = initialState, action) {
       return Object.assign({}, state, {
         isFetchingCars: false,
         cars: action.payload.cars,
+        totalPageCount: action.payload.totalPageCount,
         fetchingCarsError: null
       })
 

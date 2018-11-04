@@ -5,6 +5,21 @@ import Pagination from './Pagination'
 import Dropdown from './Dropdown'
 
 class AvailableCarsArea extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      cars: [],
+      totalPageCount: null
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      cars: nextProps.cars,
+      totalPageCount: nextProps.totalPageCount
+    })
+  }
+
   renderAvailableCars (cars) {
     const renderedCars = cars.map((car) => {
       const {
@@ -29,8 +44,10 @@ class AvailableCarsArea extends React.Component {
   }
   render () {
     const {
-      cars
-    } = this.props
+      cars,
+      totalPageCount
+    } = this.state
+
     return (
       <div className='available-cars-container'>
         <div className='available-cars__top--text'>
@@ -38,7 +55,7 @@ class AvailableCarsArea extends React.Component {
           <p className='available-cars__text available-cars__width--fourty available-cars__text--medium'>Sort by</p>
         </div>
         <div className='available-cars__top--text available-cars__text--margin'>
-          <p className='available-cars__text available-cars__text--regular'>Showing 10 of 100 results</p>
+          <p className='available-cars__text available-cars__text--regular'>{`Showing ${cars.length} of ${totalPageCount} results`}</p>
           <div className='dropdown__sort'>
             <Dropdown
               dropdownContent={['None', 'Mileage - Ascending', 'Mileage - Descending']}
@@ -49,7 +66,10 @@ class AvailableCarsArea extends React.Component {
         </div>
 
         {this.renderAvailableCars(cars)}
-        <Pagination />
+        <Pagination
+          getPageParams={this.props.getPageParams}
+          totalPageCount={totalPageCount}
+        />
         <footer className='footer'>
           <p className='footer__text'>© AUTO1 Group 2018</p>
         </footer>
