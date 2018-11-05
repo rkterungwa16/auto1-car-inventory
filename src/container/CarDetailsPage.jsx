@@ -26,7 +26,6 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('value of nextprops', nextProps)
     if (!helpers.isEmpty(nextProps.cars.car)) {
       this.setState({
         car: nextProps.cars.car
@@ -45,7 +44,7 @@ class HomePage extends React.Component {
     const {
       car
     } = this.state
-    console.log('car details page state', this.state)
+
     if (isGettingCar) {
       return (
         <h1>Loading</h1>

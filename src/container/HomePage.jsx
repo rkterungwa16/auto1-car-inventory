@@ -16,6 +16,7 @@ class HomePage extends React.Component {
     this.state = {
       cars: [],
       colors: [],
+      isGettingCars: false,
       manufacturers: [],
       selectedColor: '',
       selectedManufacturer: '',
@@ -32,7 +33,6 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('value of nextprops', nextProps)
     if (nextProps.cars.cars) {
       this.setState({
         cars: nextProps.cars.cars,
@@ -50,6 +50,10 @@ class HomePage extends React.Component {
       this.setState({
         manufacturers: nextProps.manufacturers.manufacturers
       })
+    }
+
+    if (this.props.cars.isFetchingCars !== nextProps.cars.isFetchingCars) {
+      this.setState({ isGettingCars: nextProps.cars.isFetchingCars })
     }
   }
 
@@ -110,6 +114,7 @@ class HomePage extends React.Component {
     if (selectedSortOrder === 'Mileage - Descending') {
       selectedSortOrder = 'des'
     }
+
     this.props.carsActions.getAllCars({
       manufacturer: selectedManufacturer,
       color: selectedColor,
@@ -123,9 +128,15 @@ class HomePage extends React.Component {
       cars,
       manufacturers,
       colors,
-      totalPageCount
+      totalPageCount,
+      isGettingCars
     } = this.state
-    console.log('application state', this.state)
+
+    if (isGettingCars) {
+      return (
+        <h1>Loading</h1>
+      )
+    }
     return (
       <div>
         <Header />
