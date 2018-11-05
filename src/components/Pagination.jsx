@@ -5,16 +5,10 @@ class Pagination extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      currentPage: 1,
-      totalPageCount: null
+      currentPage: 1
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      totalPageCount: nextProps.totalPageCount
-    })
-  }
   firstPage () {
     this.setState({
       currentPage: 1
@@ -41,7 +35,7 @@ class Pagination extends React.Component {
   lastPage () {
     const {
       totalPageCount
-    } = this.state
+    } = this.props
     this.setState({
       currentPage: totalPageCount
     })
@@ -50,9 +44,11 @@ class Pagination extends React.Component {
 
   nextPage () {
     const {
-      currentPage,
-      totalPageCount
+      currentPage
     } = this.state
+    const {
+      totalPageCount
+    } = this.props
 
     if (currentPage + 1 > totalPageCount) {
       this.setState({
@@ -68,9 +64,12 @@ class Pagination extends React.Component {
   }
   render () {
     const {
-      currentPage,
-      totalPageCount
+      currentPage
     } = this.state
+
+    const {
+      totalPageCount
+    } = this.props
 
     return (
       <div className='pagination'>

@@ -5,21 +5,6 @@ import Pagination from './Pagination'
 import Dropdown from './Dropdown'
 
 class AvailableCarsArea extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      cars: [],
-      totalPageCount: null
-    }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      cars: nextProps.cars,
-      totalPageCount: nextProps.totalPageCount
-    })
-  }
-
   renderAvailableCars (cars) {
     const renderedCars = cars.map((car) => {
       const {
@@ -46,7 +31,7 @@ class AvailableCarsArea extends React.Component {
     const {
       cars,
       totalPageCount
-    } = this.state
+    } = this.props
 
     return (
       <div className='available-cars-container'>

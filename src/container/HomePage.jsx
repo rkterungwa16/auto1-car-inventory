@@ -33,7 +33,7 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.cars.cars) {
+    if (nextProps.cars.cars !== this.props.cars.cars) {
       this.setState({
         cars: nextProps.cars.cars,
         totalPageCount: nextProps.cars.totalPageCount
@@ -57,7 +57,7 @@ class HomePage extends React.Component {
     }
   }
 
-  componentDidUpdate (provProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     if (prevState.selectedPage !== this.state.selectedPage) {
       this.getFilteredCarList()
     }
