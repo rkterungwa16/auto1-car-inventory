@@ -3,7 +3,7 @@
   justify-content: space-between;
   background-color: $pure-white;
   color: $dark-gray;
-  padding: $m-size;
+  padding: $s-size;
   width: 100%;
   border: 0.2rem solid $light-grey;
   border-radius: .4rem;
@@ -18,9 +18,9 @@
   text-align: left;
   background-color: $pure-white;
   font-size: $ml-size;
-  padding: $s-size;
   width: 100%;
   z-index: 1;
+  border: 0.2rem solid $light-grey;
 }
 
 .dropdown__content--show {
@@ -28,7 +28,12 @@
 }
 
 .dropdown__sort {
+  position: relative;
   width: 50%;
+}
+
+.dropdown__text--medium {
+  font-size: $ml-size;
 }
 
 .dropdown__list {
@@ -39,7 +44,11 @@
   border-right: 0.2rem solid $light-grey;
 }
 
-.list__item {
+.dropdown-list__item {
   padding: $xs-size;
-  border-bottom: 0.2rem solid $light-grey;
 }
+
+.dropdown-list__item:hover {
+  background-color: $orange
+}
+

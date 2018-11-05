@@ -78,8 +78,8 @@ class Dropdown extends React.Component {
           key={value.id}
           className={
             value.selected
-              ? 'list__item selected'
-              : 'list__item'
+              ? 'dropdown-list__item selected'
+              : 'dropdown-list__item'
           }
           onClick={() => { this.selectOption(index) }}
         >{value.title}</div>
@@ -99,7 +99,12 @@ class Dropdown extends React.Component {
         <button
           className='dropdown__btn'
           onClick={this.toggleList.bind(this)}
-        ><span>{ selectedOption[0].title }</span><i className='fas fa-caret-down fa-2x' /></button>
+        >
+          <span
+            className='dropdown__text--medium'
+          >{ selectedOption[0].title }
+          </span><i className='fas fa-caret-down fa-2x' />
+        </button>
         <div
           className={
             dropdownIsOpen
