@@ -2,6 +2,9 @@ import {
   FETCH_ALL_CARS_SUCCEEDED,
   FETCH_ALL_CARS_REQUESTED,
   FETCH_ALL_CARS_FAILED,
+  FETCH_SINGLE_CAR_FAILED,
+  FETCH_SINGLE_CAR_REQUESTED,
+  FETCH_SINGLE_CAR_SUCCEEDED,
   ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED,
   ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED,
   ADD_CAR_TO_FAVORITES_COLLECTION_FAILED
@@ -12,6 +15,9 @@ const initialState = {
   cars: [],
   totalPageCount: null,
   fetchingCarsError: null,
+  isFetchingSingleCar: false,
+  car: {},
+  fetchingSingleCarError: null,
   isAddingCar: false,
   addingCarError: null,
   isRemovingCars: false,
@@ -40,6 +46,27 @@ function cars (state = initialState, action) {
         isFetchingCars: false,
         cars: [],
         fetchingCarsError: action.payload.error.message
+      })
+
+    case FETCH_SINGLE_CAR_REQUESTED:
+      return Object.assign({}, state, {
+        isFetchingSingleCar: true,
+        cars: [],
+        fetchingSingleCarError: null
+      })
+
+    case FETCH_SINGLE_CAR_SUCCEEDED:
+      return Object.assign({}, state, {
+        isFetchingSingleCar: false,
+        car: action.payload.car,
+        fetchingSingleCarError: null
+      })
+
+    case FETCH_SINGLE_CAR_FAILED:
+      return Object.assign({}, state, {
+        isFetchingSingleCar: false,
+        car: {},
+        fetchingSingleCarError: action.payload.error.message
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED:

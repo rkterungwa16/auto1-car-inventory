@@ -3,7 +3,8 @@ import { API_URL } from '../constants'
 export const paths = {
   'get-cars': 'cars',
   'get-colors': 'colors',
-  'get-manufacturer': 'manufacturers'
+  'get-manufacturer': 'manufacturers',
+  'get-car': 'cars'
 }
 
 /**
@@ -17,8 +18,7 @@ export const paths = {
  *
  * @return {Function} A function call of the appropriate api
  */
-function fetchBackend (endpoint, method, body, params) {
-  console.log('endpoint params', endpoint, params)
+function fetchBackend (endpoint, method, body, params, id) {
   const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
@@ -31,13 +31,15 @@ function fetchBackend (endpoint, method, body, params) {
     fetchObject.body = JSON.stringify(body)
   }
 
+  if (id) {
+    url = `${url}/${id}`
+  }
+
   // Construct the appropriate url that has extra parameters
   if (params) {
     const paramsArray = Object.keys(params).map((key) => {
       return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
     })
-
-    console.log('params', params)
 
     url += `?${paramsArray.join('&')}`
   }
@@ -51,8 +53,8 @@ function fetchBackend (endpoint, method, body, params) {
  * @param {String | null} params query strings if
  * none is required pass null
  */
-export function get (endpoint, params) {
-  return fetchBackend(endpoint, 'GET', null, params)
+export function get (endpoint, params, id = null) {
+  return fetchBackend(endpoint, 'GET', null, params, id)
 }
 
 /**

@@ -4,7 +4,7 @@ const Button = (props) => (
   <button
     className='btn'
     onClick={props.handleClick}
-  >Filter</button>
+  >{props.text}</button>
 )
 
 export default Button

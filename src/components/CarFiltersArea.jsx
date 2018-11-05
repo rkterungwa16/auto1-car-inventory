@@ -33,7 +33,7 @@ const CarFiltersArea = (props) => {
         <div
           className='filter__btn--container'
         >
-          <Button handleClick={getFilteredCarList} />
+          <Button handleClick={getFilteredCarList} text='Filter' />
         </div>
       </div>
     </div>

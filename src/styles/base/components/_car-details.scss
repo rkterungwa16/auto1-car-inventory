@@ -1,0 +1,63 @@
+.car-view {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+  justify-content: center;
+}
+
+.car-details__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 3rem;
+}
+
+.car-details {
+  display: flex;
+  flex-direction: column;
+  color: $dark-gray;
+  width: 60%;
+}
+
+.car-details__text--margin {
+  padding-left: 15rem;
+  padding-right: 5rem;
+}
+.car-details__text--xlarge {
+  display: flex;
+  font-size: 5rem;
+  margin-top: 0;
+}
+
+.car-details__text--large {
+  display: flex;
+}
+
+.car-details__text--small {
+  display: flex;
+  font-size: 1.7rem;
+  text-align: start;
+}
+
+.save-car {
+  border: 2px solid $light-grey;
+  margin-left: 10rem;
+  margin-right: 5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  color: $dark-gray;
+  width: 40%;
+}
+
+.save-car__text--small {
+  display: flex;
+  font-size: 1.7rem;
+  text-align: start;
+}
+
+.save-car__btn--wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

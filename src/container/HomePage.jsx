@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Header from '../../components/Header'
-// import Footer from '../../components/Footer'
-import CarFiltersArea from '../../components/CarFiltersArea'
-import AvailableCarsArea from '../../components/AvailableCarsArea'
-import * as carsActions from '../../actions/cars'
-import * as colorsActions from '../../actions/colors'
-import * as manufacturersActions from '../../actions/manufacturers'
+import Header from '../components/Header'
+// import Footer from '../components/Footer'
+import CarFiltersArea from '../components/CarFiltersArea'
+import AvailableCarsArea from '../components/AvailableCarsArea'
+import * as carsActions from '../actions/cars'
+import * as colorsActions from '../actions/colors'
+import * as manufacturersActions from '../actions/manufacturers'
 
-class CarsView extends React.Component {
+class HomePage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -168,4 +168,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarsView)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

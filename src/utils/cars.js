@@ -7,8 +7,8 @@ export const getCarsApi = (filterParams = null) => {
     .catch(err => err)
 }
 
-export const getCarApi = () => {
-  return get('get-car')
+export const getSingleCarApi = (stockNumber) => {
+  return get('get-car', null, stockNumber)
     .then(checkHttpStatus)
     .then(parseJSON)
     .catch(err => err)
