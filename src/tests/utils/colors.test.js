@@ -17,7 +17,8 @@ describe('Colors API', function () {
 
   it('fetch all colors', function () {
     getColorsApi().then(response => {
-      expect(response[0]).toBe('Yellow')
+      const parsedResponse = JSON.parse(response)
+      expect(parsedResponse).toEqual(['Yellow'])
     })
   })
 })

@@ -18,7 +18,9 @@ describe('Cars API', function () {
 
   it('fetch all cars', function () {
     getCarsApi().then(response => {
-      expect(response.modelName).toBe('car')
+      const parsedResponse = JSON.parse(response)
+      expect(parsedResponse.modelName).toEqual()
+      expect(response.modelName).toEqual('car')
     })
   })
 

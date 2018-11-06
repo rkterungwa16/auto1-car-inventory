@@ -17,7 +17,8 @@ describe('Manufacturers API', function () {
 
   it('fetch all manufacturers', function () {
     getManufacturersApi().then(response => {
-      expect(response[0]).toBe('BMW')
+      const parsedResponse = JSON.parse(response)
+      expect(parsedResponse).toEqual(['BMW'])
     })
   })
 })
