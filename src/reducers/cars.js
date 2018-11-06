@@ -13,6 +13,7 @@ import {
 const initialState = {
   isFetchingCars: false,
   cars: [],
+  favoriteCars: [],
   totalPageCount: null,
   fetchingCarsError: null,
   isFetchingSingleCar: false,
@@ -70,24 +71,27 @@ function cars (state = initialState, action) {
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED:
-      const addedCar = state.car.concat([action.payload.data])
+      console.log('get item ', localStorage.getItem('cars'))
+      const parsedLocalStorageData = JSON.parse(localStorage.getItem('cars'))
+      const addedCar = parsedLocalStorageData.concat([action.payload.car])
+      localStorage.setItem('cars', JSON.stringify(addedCar))
       return Object.assign({}, state, {
         isAddingCar: true,
-        cars: addedCar,
+        favoriteCars: addedCar,
         addCarError: null
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_FAILED:
       return Object.assign({}, state, {
         isAddingCar: false,
-        cars: false,
+        favoriteCars: false,
         addingCarError: action.payload.error.message
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED:
       return Object.assign({}, state, {
         isAddingCar: true,
-        cars: [],
+        favoriteCars: [],
         addingCarsError: null
       })
 

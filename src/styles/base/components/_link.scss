@@ -3,6 +3,10 @@
   color: $orange;
 }
 
+.link__text--orange:hover {
+  text-decoration: underline;
+}
+
 .link__text--black {
   text-decoration: none;
   color: $dark-gray;

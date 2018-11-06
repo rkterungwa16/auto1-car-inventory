@@ -45,7 +45,8 @@
 }
 
 .dropdown-list__item {
-  padding: $xs-size;
+  padding: $s-size;
+  border: 0.1rem solid $light-grey;
 }
 
 .dropdown-list__item:hover {

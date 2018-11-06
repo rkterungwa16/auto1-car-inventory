@@ -37,6 +37,15 @@ class HomePage extends React.Component {
     }
   }
 
+  /**
+   * add particular car to favorites list
+   * @param {Object} car Object containing car details
+   * @return {*} none
+   */
+  addFavoriteCar (car) {
+    this.props.carsActions.addFavoriteCar(car)
+  }
+
   render () {
     const {
       isGettingCar
@@ -85,7 +94,10 @@ class HomePage extends React.Component {
               </p>
             </div>
             <div className='save-car__btn--wrapper'>
-              <Button text='Save' />
+              <Button
+                text='Save'
+                handleClick={this.addFavoriteCar.bind(this, car)}
+              />
             </div>
           </div>
         </div>

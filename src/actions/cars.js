@@ -12,6 +12,7 @@ import {
 
 import { getCarsApi, getSingleCarApi } from '../utils/cars'
 import { handleError } from '../utils/fetch'
+import { addFavoriteCarAsync } from '../helpers'
 
 export function getCarsRequest () {
   return {
@@ -88,20 +89,20 @@ export function getSingleCar (stockNumber) {
       })
   }
 }
-export function addCarRequest () {
+export function addFavoriteCarRequest () {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED
   }
 }
 
-export function addCarSuccess (data) {
+export function addFavoriteCarSuccess (data) {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED,
     payload: data
   }
 }
 
-export function addCarFailure (error) {
+export function addFavoriteCarFailure (error) {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
     payload: {
@@ -110,18 +111,18 @@ export function addCarFailure (error) {
   }
 }
 
-// export function addCar (data) {
-//   return (dispatch) => {
-//     dispatch(addCarRequest())
+export function addFavoriteCar (car) {
+  return (dispatch) => {
+    dispatch(addFavoriteCarRequest())
 
-//     return addCarApi(data)
-//       .then((response) => {
-//         dispatch(addCarSuccess(response))
-//         return true
-//       })
-//       .catch((error) => {
-//         dispatch(addCarFailure(handleError(error)))
-//         return false
-//       })
-//   }
-// }
+    return addFavoriteCarAsync(car)
+      .then((response) => {
+        dispatch(addFavoriteCarSuccess(response))
+        return true
+      })
+      .catch((error) => {
+        dispatch(addFavoriteCarFailure(handleError(error)))
+        return false
+      })
+  }
+}

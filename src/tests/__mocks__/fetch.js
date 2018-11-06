@@ -11,13 +11,11 @@ const apiResources = {
 export default function fetch (url) {
   return new Promise((resolve, reject) => {
     // const userID = parseInt(url.substr('/users/'.length), 10)
-    process.nextTick(
-      () => {
-        resolve(cars)
-        reject(new Error({
-          error: 'Resource not found.'
-        }))
-      }
-    )
+    process.nextTick(() => {
+      resolve(cars)
+      reject(new Error({
+        error: 'Resource not found.'
+      }))
+    })
   })
 }
