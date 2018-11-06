@@ -71,7 +71,6 @@ function cars (state = initialState, action) {
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED:
-      console.log('get item ', localStorage.getItem('cars'))
       const parsedLocalStorageData = JSON.parse(localStorage.getItem('cars'))
       const addedCar = parsedLocalStorageData.concat([action.payload.car])
       localStorage.setItem('cars', JSON.stringify(addedCar))

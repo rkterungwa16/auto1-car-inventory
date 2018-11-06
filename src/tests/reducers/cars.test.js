@@ -5,8 +5,12 @@ test('should setup default cars values', () => {
   expect(state).toEqual({
     isFetchingCars: false,
     cars: [],
+    favoriteCars: [],
     totalPageCount: null,
     fetchingCarsError: null,
+    isFetchingSingleCar: false,
+    car: {},
+    fetchingSingleCarError: null,
     isAddingCar: false,
     addingCarError: null,
     isRemovingCars: false,

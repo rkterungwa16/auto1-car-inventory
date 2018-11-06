@@ -43,7 +43,7 @@ function fetchBackend (endpoint, method, body, params, id) {
 
     url += `?${paramsArray.join('&')}`
   }
-
+  console.log('endpoint', url)
   return fetch(url, fetchObject)
 }
 
