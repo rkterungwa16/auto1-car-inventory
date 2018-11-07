@@ -1,23 +1,5 @@
 import carsReducer from '../../reducers/cars'
 
-let store = {}
-const localStorageMock = {
-  getItem: jest.fn().mockImplementation((key) => {
-    return store[key] || null
-  }),
-  setItem: jest.fn((key, value) => {
-    store[key] = value
-  }),
-  clear: jest.fn().mockImplementation(() => {
-    store = {}
-  }),
-  removeItem: jest.fn().mockImplementation((key) => {
-    delete store[key]
-  })
-}
-window.localStorage = localStorageMock
-
-window.localStorage.setItem('cars', JSON.stringify([]))
 test('should setup default cars values', () => {
   const state = carsReducer(undefined, { type: '@@INIT' })
   expect(state).toEqual({
