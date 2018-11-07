@@ -10,7 +10,9 @@ exports[`should render Dropdown correctly 1`] = `
   >
     <span
       className="dropdown__text--medium"
-    />
+    >
+      title
+    </span>
     <i
       className="fas fa-caret-down fa-2x"
     />
@@ -31,7 +33,9 @@ exports[`should render Dropdown with alt data correctly 1`] = `
   >
     <span
       className="dropdown__text--medium"
-    />
+    >
+      title
+    </span>
     <i
       className="fas fa-caret-down fa-2x"
     />

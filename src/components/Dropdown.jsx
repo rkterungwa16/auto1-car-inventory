@@ -26,13 +26,11 @@ class Dropdown extends React.Component {
         key: value.toLowerCase()
       }
     })
-
     return formattedData
   }
 
   selectOption (tab) {
     const content = this.formatData(this.props.dropdownContent)
-
     // Mark selected value
     const state = content.map((value, index) => {
       const selectedState = {
@@ -47,8 +45,8 @@ class Dropdown extends React.Component {
 
     // Get element selected
     const selected = state.filter(options => options.selected === true)
+
     this.setState({
-      categories: state,
       selectedOption: selected
     })
     this.fireChangeEvent({ value: selected[0].id, label: selected[0].title })
