@@ -22,6 +22,18 @@
     "test": "jest --watch",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/src/tests/__mocks__/styleMock.js"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -38,6 +50,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "jest": "^23.6.0"
   }
 }

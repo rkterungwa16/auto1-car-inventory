@@ -25,6 +25,7 @@ test('should setup default cars values', () => {
     cars: [],
     favoriteCars: [],
     totalPageCount: null,
+    carRemoved: {},
     fetchingCarsError: null,
     isFetchingSingleCar: false,
     car: {},
@@ -95,7 +96,7 @@ test('should successfully add favorite car', () => {
 
   const state = carsReducer(undefined, {
     type: 'ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED',
-    payload: { car: 'mercedes' }
+    payload: { cars: ['mercedes'] }
   })
   expect(state.favoriteCars).toEqual(['mercedes'])
 })
@@ -104,10 +105,8 @@ test('should return error on failure to add car', () => {
   const state = carsReducer(undefined, {
     type: 'ADD_CAR_TO_FAVORITES_COLLECTION_FAILED',
     payload: {
-      error: {
-        message: 'error'
-      }
+      message: 'error'
     }
   })
-  expect(state.addingCarError).toEqual('error')
+  expect(JSON.parse(state.addingCarError).message).toEqual('error')
 })

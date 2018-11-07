@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AvailableCar correctly 1`] = `
+<div
+  className="available-car"
+>
+  <div
+    className="available-car__img--container"
+  />
+  <div
+    className="available-car__details--container"
+  >
+    <div
+      className="available-car__details"
+    >
+      <p
+        className="available-cars__text available-cars__text--bold"
+      >
+        Taurus
+      </p>
+      <div
+        className="available-cars__text available-cars__text--small available-cars__width--max"
+      >
+        <p>
+          Stock #
+            100 -
+            100 KM -
+            undefined -
+            Yellow
+        </p>
+      </div>
+      <Link
+        className="available-cars__text available-cars__text--small link__text--orange"
+        replace={false}
+        to="/car/100"
+      >
+        View details
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render AvailableCar with alt data correctly 1`] = `
+<div
+  className="available-car"
+>
+  <div
+    className="available-car__img--container"
+  />
+  <div
+    className="available-car__details--container"
+  >
+    <div
+      className="available-car__details"
+    >
+      <p
+        className="available-cars__text available-cars__text--bold"
+      >
+        Taurus
+      </p>
+      <div
+        className="available-cars__text available-cars__text--small available-cars__width--max"
+      >
+        <p>
+          Stock #
+            100 -
+            100 KM -
+            undefined -
+            block
+        </p>
+      </div>
+      <Link
+        className="available-cars__text available-cars__text--small link__text--orange"
+        replace={false}
+        to="/car/100"
+      >
+        View details
+      </Link>
+    </div>
+  </div>
+</div>
+`;

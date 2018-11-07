@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Pagination correctly 1`] = `
+<div
+  className="pagination"
+>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    First
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Previous
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--black"
+    href="#view details"
+  >
+    Page 1 of 100
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Next
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Last
+  </a>
+</div>
+`;
+
+exports[`should render Pagination with alt data correctly 1`] = `
+<div
+  className="pagination"
+>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    First
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Previous
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--black"
+    href="#view details"
+  >
+    Page 1 of 5
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Next
+  </a>
+  <a
+    className="available-cars__text available-cars__text--small link__text--orange"
+    href="#view details"
+    onClick={[Function]}
+  >
+    Last
+  </a>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Dropdown correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    className="dropdown__btn"
+    onClick={[Function]}
+  >
+    <span
+      className="dropdown__text--medium"
+    />
+    <i
+      className="fas fa-caret-down fa-2x"
+    />
+  </button>
+  <div
+    className="dropdown__content"
+  />
+</div>
+`;
+
+exports[`should render Dropdown with alt data correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    className="dropdown__btn"
+    onClick={[Function]}
+  >
+    <span
+      className="dropdown__text--medium"
+    />
+    <i
+      className="fas fa-caret-down fa-2x"
+    />
+  </button>
+  <div
+    className="dropdown__content"
+  />
+</div>
+`;

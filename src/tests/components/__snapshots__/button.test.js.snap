@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Button correctly 1`] = `
+<button
+  className="btn"
+  onClick={[MockFunction]}
+>
+  Save
+</button>
+`;
+
+exports[`should render Button with alt data correctly 1`] = `
+<button
+  className="btn"
+  onClick={[MockFunction]}
+>
+  Remove
+</button>
+`;

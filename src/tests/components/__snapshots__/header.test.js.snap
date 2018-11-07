@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header__left"
+  >
+    <img
+      alt="Auto1"
+      className="header__logo"
+      src="test-file-stub"
+    />
+  </div>
+  <div
+    className="header__right"
+  >
+    <a
+      className="header__link"
+      href="#purchase"
+    >
+      Purchase
+    </a>
+    <a
+      className="header__link"
+      href="#myOrders"
+    >
+      My Orders
+    </a>
+    <a
+      className="header__link"
+      href="#Sell"
+    >
+      Sell
+    </a>
+    <a
+      className="header__icon"
+      href="#icon"
+    >
+      <i
+        className="fa fa-bars"
+      />
+    </a>
+  </div>
+</div>
+`;

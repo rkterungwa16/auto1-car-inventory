@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AvailableCarsArea correctly 1`] = `
+<div
+  className="available-cars-container"
+>
+  <div
+    className="available-cars__top--text"
+  >
+    <p
+      className="available-cars__text available-cars__text--bold"
+    >
+      Available Cars
+    </p>
+    <p
+      className="available-cars__text available-cars__width--fourty available-cars__text--medium"
+    >
+      Sort by
+    </p>
+  </div>
+  <div
+    className="available-cars__top--text available-cars__text--margin"
+  >
+    <p
+      className="available-cars__text available-cars__text--regular"
+    >
+      Showing 1 of 100 results
+    </p>
+    <div
+      className="dropdown__sort"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "None",
+          }
+        }
+        dropdownContent={
+          Array [
+            "None",
+            "Mileage - Ascending",
+            "Mileage - Descending",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+  </div>
+  <AvailableCar
+    color="Yellow"
+    fuelType="Petrol"
+    key="100"
+    mileage={
+      Object {
+        "number": 100,
+        "unit": "km",
+      }
+    }
+    modelName="Taurus"
+    stockNumber={100}
+  />
+  <Pagination
+    getPageParams={[MockFunction]}
+    totalPageCount={100}
+  />
+  <footer
+    className="footer"
+  >
+    <p
+      className="footer__text"
+    >
+      © AUTO1 Group 2018
+    </p>
+  </footer>
+</div>
+`;
+
+exports[`should render AvailableCarsArea with alt data correctly 1`] = `
+<div
+  className="available-cars-container"
+>
+  <div
+    className="available-cars__top--text"
+  >
+    <p
+      className="available-cars__text available-cars__text--bold"
+    >
+      Available Cars
+    </p>
+    <p
+      className="available-cars__text available-cars__width--fourty available-cars__text--medium"
+    >
+      Sort by
+    </p>
+  </div>
+  <div
+    className="available-cars__top--text available-cars__text--margin"
+  >
+    <p
+      className="available-cars__text available-cars__text--regular"
+    >
+      Showing 1 of 100 results
+    </p>
+    <div
+      className="dropdown__sort"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "None",
+          }
+        }
+        dropdownContent={
+          Array [
+            "None",
+            "Mileage - Ascending",
+            "Mileage - Descending",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+  </div>
+  <AvailableCar
+    color="Yellow"
+    fuelType="Petrol"
+    key="100"
+    mileage={
+      Object {
+        "number": 100,
+        "unit": "km",
+      }
+    }
+    modelName="Taurus"
+    stockNumber={100}
+  />
+  <Pagination
+    getPageParams={[MockFunction]}
+    totalPageCount={100}
+  />
+  <footer
+    className="footer"
+  >
+    <p
+      className="footer__text"
+    >
+      © AUTO1 Group 2018
+    </p>
+  </footer>
+</div>
+`;

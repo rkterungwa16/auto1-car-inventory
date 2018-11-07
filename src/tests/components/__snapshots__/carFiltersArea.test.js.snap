@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CarFiltersArea correctly 1`] = `
+<div
+  className="filters-container"
+>
+  <div
+    className="filters-container__content"
+  >
+    <p
+      className="filter__text--small"
+    >
+      Color
+    </p>
+    <div
+      className="filter__dropdown"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "All car colors",
+          }
+        }
+        dropdownContent={
+          Array [
+            "Yellow",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+    <p
+      className="filter__text--small"
+    >
+      Manufacturer
+    </p>
+    <div
+      className="filter__dropdown"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "All manufacturers",
+          }
+        }
+        dropdownContent={
+          Array [
+            "BMW",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+    <div
+      className="filter__btn--container"
+    >
+      <Button
+        handleClick={[MockFunction]}
+        text="Filter"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render CarFiltersArea with alt data correctly 1`] = `
+<div
+  className="filters-container"
+>
+  <div
+    className="filters-container__content"
+  >
+    <p
+      className="filter__text--small"
+    >
+      Color
+    </p>
+    <div
+      className="filter__dropdown"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "All car colors",
+          }
+        }
+        dropdownContent={
+          Array [
+            "Yellow",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+    <p
+      className="filter__text--small"
+    >
+      Manufacturer
+    </p>
+    <div
+      className="filter__dropdown"
+    >
+      <Dropdown
+        defaultDropdownTitle={
+          Object {
+            "title": "All manufacturers",
+          }
+        }
+        dropdownContent={
+          Array [
+            "BMW",
+          ]
+        }
+        getFilterParams={[MockFunction]}
+      />
+    </div>
+    <div
+      className="filter__btn--container"
+    >
+      <Button
+        handleClick={[MockFunction]}
+        text="Filter"
+      />
+    </div>
+  </div>
+</div>
+`;
