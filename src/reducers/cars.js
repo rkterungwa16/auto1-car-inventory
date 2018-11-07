@@ -16,7 +16,7 @@ import {
 const initialState = {
   isFetchingCars: false,
   cars: [],
-  favoriteCars: localStorage.getItem('cars') ? localStorage.getItem('cars') : [],
+  favoriteCars: localStorage.getItem('cars') ? JSON.parse(localStorage.getItem('cars')) : [],
   totalPageCount: null,
   fetchingCarsError: null,
   isFetchingSingleCar: false,
@@ -98,7 +98,7 @@ function cars (state = initialState, action) {
     case REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED:
       return Object.assign({}, state, {
         isRemovingCar: true,
-        carRemoved: action.payload.car,
+        favoriteCars: action.payload.cars,
         removingCarError: null
       })
 

@@ -1,6 +1,5 @@
 import React from 'react'
 
-// First Previous Page 2 of 10 Next Last
 class Pagination extends React.Component {
   constructor (props) {
     super(props)
@@ -9,12 +8,19 @@ class Pagination extends React.Component {
     }
   }
 
+  /**
+   * skip to the first page
+   */
   firstPage () {
     this.setState({
       currentPage: 1
     })
     this.props.getPageParams(1)
   }
+
+  /**
+   * Skip to the previous page
+   */
   previousPage () {
     const {
       currentPage
@@ -32,6 +38,9 @@ class Pagination extends React.Component {
     }
   }
 
+  /**
+   * Skip to the last page
+   */
   lastPage () {
     const {
       totalPageCount
@@ -42,6 +51,9 @@ class Pagination extends React.Component {
     this.props.getPageParams(totalPageCount)
   }
 
+  /**
+   * Skip to next page
+   */
   nextPage () {
     const {
       currentPage

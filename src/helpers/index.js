@@ -54,15 +54,9 @@ export const removeFromFavoriteCarAsync = (car) => {
       if (cars && cars.length > 1) {
         const parsedLocalStorageData = JSON.parse(cars)
         const modifiedCars = parsedLocalStorageData.filter((data, index, arr) => {
-          return data.modelName === car.modelName
+          return data.modelName !== car.modelName
         })
-        localStorage.setItem('cars', JSON.stringify(modifiedCars))
-        if (modifiedCars.length === 0) {
-          const carDoesNotExistError = new Error()
-          carDoesNotExistError.message = 'Car does not exist in storage'
-          return reject(carDoesNotExistError)
-        }
-        return resolve({ car })
+        return resolve({ cars: modifiedCars })
       }
       if (cars && cars.length === 0) {
         const emptyStorageError = new Error()

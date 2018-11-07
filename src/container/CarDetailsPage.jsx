@@ -14,7 +14,8 @@ class HomePage extends React.Component {
     this.state = {
       car: {},
       isGettingCar: false,
-      addingCarError: null
+      addingCarError: null,
+      favoriteCars: []
     }
   }
 
@@ -26,6 +27,7 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    console.log('nextprops', nextProps)
     if (nextProps.cars.car !== this.props.cars.car) {
       this.setState({
         car: nextProps.cars.car
@@ -34,6 +36,10 @@ class HomePage extends React.Component {
 
     if (this.props.cars.isFetchingSingleCar !== nextProps.cars.isFetchingSingleCar) {
       this.setState({ isGettingCar: nextProps.cars.isFetchingSingleCar })
+    }
+
+    if (nextProps.cars.favoriteCars) {
+      this.setState({ favoriteCars: nextProps.cars.favoriteCars })
     }
 
     if (this.props.cars.addingCarError !== nextProps.cars.addingCarError) {
@@ -50,19 +56,45 @@ class HomePage extends React.Component {
     this.props.carsActions.addFavoriteCar(car)
   }
 
+  /**
+   * remove a particular car from favorites list
+   * @param {Object} car Object containing specified details
+   * @return {*} none
+   */
+  removeCarFromFav (car) {
+    this.props.carsActions.removeFavoriteCar(car)
+  }
+
+  /**
+   * Confirm if this car is already added
+   * @param {Object} car Object representing car to check
+   * @param {Array} favoriteCars List of favorite cars
+   * @return {Boolean} true if it exists in favorite cars
+   */
+  existsInFavCars (car, favoriteCars) {
+    let exists = false
+    favoriteCars.forEach((favCar) => {
+      if (favCar.modelName === car.modelName) {
+        exists = true
+      }
+    })
+    return exists
+  }
+
   render () {
     const {
       isGettingCar
     } = this.state
     const {
-      car
+      car,
+      favoriteCars
     } = this.state
-    console.log('car details props', this.props.cars.addingCarError)
     if (isGettingCar) {
       return (
         <h1>Loading</h1>
       )
     }
+    console.log('exists in fav', this.state)
     return (
       <Fragment>
         <Header />
@@ -98,6 +130,14 @@ class HomePage extends React.Component {
               </p>
             </div>
             <div className='save-car__btn--wrapper'>
+              {
+                this.existsInFavCars(car, favoriteCars)
+                  ? <Button
+                    text='Remove'
+                    handleClick={this.removeCarFromFav.bind(this, car)}
+                  />
+                  : null
+              }
               <Button
                 text='Save'
                 handleClick={this.addFavoriteCar.bind(this, car)}
