@@ -11,7 +11,6 @@ const CarFiltersArea = (props) => {
     getManufacturersFilterParams,
     getFilteredCarList
   } = props
-  console.log('colors', colors)
   return (
     <div className='filters-container'>
       <div className='filters-container__content'>

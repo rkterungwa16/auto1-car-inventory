@@ -1,16 +1,4 @@
 /**
- * check if an object is empty
- * @param {Object} obj object to check
- * @return {Boolean} true if is empty else false
- */
-export const isEmpty = (obj) => {
-  for (let prop in obj) {
-    if (obj.hasOwnProperty(prop)) { return false }
-  }
-  return true
-}
-
-/**
  * Asynchronously return car object to be added to localStorage
  * @param {Object} car object containing car details
  * @return {Promise} promise

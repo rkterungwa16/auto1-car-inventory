@@ -20,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest --watch",
+    "coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -27,7 +28,12 @@
       "enzyme-to-json/serializer"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "src/components/*.{js,jsx}",
+      "src/container/*.{js,jsx}",
+      "src/reducers/*.{js,jsx}",
+      "src/utils/*.{js,jsx}",
+      "src/actions/*.{js,jsx}",
+      "src/helpers/*.{js,jsx}"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",

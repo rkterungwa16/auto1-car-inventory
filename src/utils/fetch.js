@@ -98,6 +98,5 @@ export function parseJSON (response) {
 }
 
 export const handleError = (error) => {
-  console.log('handle error', error)
   return error
 }

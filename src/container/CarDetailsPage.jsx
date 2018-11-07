@@ -27,7 +27,6 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('nextprops', nextProps)
     if (nextProps.cars.car !== this.props.cars.car) {
       this.setState({
         car: nextProps.cars.car
@@ -94,7 +93,7 @@ class HomePage extends React.Component {
         <h1>Loading</h1>
       )
     }
-    console.log('exists in fav', this.state)
+
     return (
       <Fragment>
         <Header />
