@@ -7,12 +7,15 @@ import {
   FETCH_SINGLE_CAR_FAILED,
   ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED,
   ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED,
-  ADD_CAR_TO_FAVORITES_COLLECTION_FAILED
+  ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED
 } from '../constants'
 
 import { getCarsApi, getSingleCarApi } from '../utils/cars'
 import { handleError } from '../utils/fetch'
-import { addFavoriteCarAsync } from '../helpers'
+import { addFavoriteCarAsync, removeFromFavoriteCarAsync } from '../helpers'
 
 export function getCarsRequest () {
   return {
@@ -105,9 +108,7 @@ export function addFavoriteCarSuccess (data) {
 export function addFavoriteCarFailure (error) {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
-    payload: {
-      error: error
-    }
+    payload: error
   }
 }
 
@@ -121,7 +122,45 @@ export function addFavoriteCar (car) {
         return true
       })
       .catch((error) => {
-        dispatch(addFavoriteCarFailure(handleError(error)))
+        dispatch(addFavoriteCarFailure(error.message))
+        return false
+      })
+  }
+}
+
+export function removeFavoriteCarRequest () {
+  return {
+    type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED
+  }
+}
+
+export function removeFavoriteCarSuccess (data) {
+  return {
+    type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
+    payload: data
+  }
+}
+
+export function removeFavoriteCarFailure (error) {
+  return {
+    type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
+    payload: {
+      error: error
+    }
+  }
+}
+
+export function removeFavoriteCar (car) {
+  return (dispatch) => {
+    dispatch(removeFavoriteCarRequest())
+
+    return removeFromFavoriteCarAsync(car)
+      .then((response) => {
+        dispatch(removeFavoriteCarSuccess(response))
+        return true
+      })
+      .catch((error) => {
+        dispatch(removeFavoriteCarFailure(error.message))
         return false
       })
   }

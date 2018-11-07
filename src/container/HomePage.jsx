@@ -40,13 +40,13 @@ class HomePage extends React.Component {
       })
     }
 
-    if (nextProps.colors.colors) {
+    if (nextProps.colors.colors !== this.props.colors.colors) {
       this.setState({
         colors: nextProps.colors.colors
       })
     }
 
-    if (nextProps.colors.colors) {
+    if (nextProps.manufacturers.manufacturers !== this.props.manufacturers.manufacturers) {
       this.setState({
         manufacturers: nextProps.manufacturers.manufacturers
       })

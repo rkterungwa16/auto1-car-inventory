@@ -6,16 +6,7 @@ class Dropdown extends React.Component {
     super(props)
     this.state = {
       dropdownIsOpen: false,
-      selectedOption: [this.props.defaultDropdownTitle ? this.props.defaultDropdownTitle : ''],
-      content: []
-    }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.dropdownContent) {
-      this.setState({
-        content: this.formatData(nextProps.dropdownContent)
-      })
+      selectedOption: [this.props.defaultDropdownTitle ? this.props.defaultDropdownTitle : '']
     }
   }
 
@@ -40,9 +31,7 @@ class Dropdown extends React.Component {
   }
 
   selectOption (tab) {
-    const {
-      content
-    } = this.state
+    const content = this.formatData(this.props.dropdownContent)
 
     // Mark selected value
     const state = content.map((value, index) => {
@@ -91,8 +80,7 @@ class Dropdown extends React.Component {
   render () {
     const {
       dropdownIsOpen,
-      selectedOption,
-      content
+      selectedOption
     } = this.state
     return (
       <div className='dropdown'>
@@ -113,7 +101,7 @@ class Dropdown extends React.Component {
         >
           {
             dropdownIsOpen
-              ? this.renderDropdownContents(content)
+              ? this.renderDropdownContents(this.formatData(this.props.dropdownContent))
               : null
           }
         </div>

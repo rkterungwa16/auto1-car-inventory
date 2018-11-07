@@ -98,11 +98,6 @@ export function parseJSON (response) {
 }
 
 export const handleError = (error) => {
-  const errorStatus = error.response ? error.response.status : 'Unknown Status'
-  const statusText = error.response ? error.response.statusText : 'An error occured'
-  const response = {
-    status: errorStatus,
-    statusText: statusText
-  }
-  return response
+  console.log('handle error', error)
+  return error
 }

@@ -7,14 +7,14 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 
 import * as carsActions from '../actions/cars'
-import * as helpers from '../helpers'
 
 class HomePage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       car: {},
-      isGettingCar: false
+      isGettingCar: false,
+      addingCarError: null
     }
   }
 
@@ -26,7 +26,7 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (!helpers.isEmpty(nextProps.cars.car)) {
+    if (nextProps.cars.car !== this.props.cars.car) {
       this.setState({
         car: nextProps.cars.car
       })
@@ -34,6 +34,10 @@ class HomePage extends React.Component {
 
     if (this.props.cars.isFetchingSingleCar !== nextProps.cars.isFetchingSingleCar) {
       this.setState({ isGettingCar: nextProps.cars.isFetchingSingleCar })
+    }
+
+    if (this.props.cars.addingCarError !== nextProps.cars.addingCarError) {
+      this.setState({ addingCarError: nextProps.cars.addingCarError })
     }
   }
 
@@ -53,7 +57,7 @@ class HomePage extends React.Component {
     const {
       car
     } = this.state
-
+    console.log('car details props', this.props.cars.addingCarError)
     if (isGettingCar) {
       return (
         <h1>Loading</h1>

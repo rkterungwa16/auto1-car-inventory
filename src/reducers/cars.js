@@ -7,13 +7,16 @@ import {
   FETCH_SINGLE_CAR_SUCCEEDED,
   ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED,
   ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED,
-  ADD_CAR_TO_FAVORITES_COLLECTION_FAILED
+  ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED,
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED
 } from '../constants'
 
 const initialState = {
   isFetchingCars: false,
   cars: [],
-  favoriteCars: [],
+  favoriteCars: localStorage.getItem('cars') ? localStorage.getItem('cars') : [],
   totalPageCount: null,
   fetchingCarsError: null,
   isFetchingSingleCar: false,
@@ -21,6 +24,7 @@ const initialState = {
   fetchingSingleCarError: null,
   isAddingCar: false,
   addingCarError: null,
+  carRemoved: {},
   isRemovingCars: false,
   removingCarError: null
 }
@@ -71,27 +75,45 @@ function cars (state = initialState, action) {
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED:
-      const parsedLocalStorageData = JSON.parse(localStorage.getItem('cars'))
-      const addedCar = parsedLocalStorageData.concat([action.payload.car])
-      localStorage.setItem('cars', JSON.stringify(addedCar))
       return Object.assign({}, state, {
         isAddingCar: true,
-        favoriteCars: addedCar,
+        favoriteCars: action.payload.cars,
         addCarError: null
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_FAILED:
       return Object.assign({}, state, {
         isAddingCar: false,
-        favoriteCars: false,
-        addingCarError: action.payload.error.message
+        favoriteCars: state.favoriteCars,
+        addingCarError: JSON.stringify(action.payload)
       })
 
     case ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED:
       return Object.assign({}, state, {
         isAddingCar: true,
-        favoriteCars: [],
+        favoriteCars: state.favoriteCars,
         addingCarsError: null
+      })
+
+    case REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED:
+      return Object.assign({}, state, {
+        isRemovingCar: true,
+        carRemoved: action.payload.car,
+        removingCarError: null
+      })
+
+    case REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED:
+      return Object.assign({}, state, {
+        isRemovingCar: false,
+        carRemoved: false,
+        removingCarError: action.payload.error.message
+      })
+
+    case REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED:
+      return Object.assign({}, state, {
+        isRemovingCar: true,
+        carRemoved: [],
+        removingCarError: null
       })
 
     default:
