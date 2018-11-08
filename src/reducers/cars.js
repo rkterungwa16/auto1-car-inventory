@@ -10,12 +10,14 @@ import {
   ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
   REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
   REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED,
-  REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
+  PAGE_NUMBER_CHANGED
 } from '../constants'
 
 const initialState = {
   isFetchingCars: false,
   cars: [],
+  currentPage: 1,
   favoriteCars: localStorage.getItem('cars') ? JSON.parse(localStorage.getItem('cars')) : [],
   totalPageCount: null,
   fetchingCarsError: null,
@@ -114,6 +116,11 @@ function cars (state = initialState, action) {
         isRemovingCar: true,
         carRemoved: [],
         removingCarError: null
+      })
+
+    case PAGE_NUMBER_CHANGED:
+      return Object.assign({}, state, {
+        currentPage: action.payload
       })
 
     default:

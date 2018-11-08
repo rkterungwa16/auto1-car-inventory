@@ -5,6 +5,7 @@ test('should setup default cars values', () => {
   expect(state).toEqual({
     isFetchingCars: false,
     cars: [],
+    currentPage: 1,
     favoriteCars: [],
     totalPageCount: null,
     carRemoved: {},
@@ -17,6 +18,14 @@ test('should setup default cars values', () => {
     isRemovingCars: false,
     removingCarError: null
   })
+})
+
+test('should change page number', () => {
+  const state = carsReducer(undefined, {
+    type: 'PAGE_NUMBER_CHANGED',
+    payload: 1
+  })
+  expect(state.currentPage).toEqual(1)
 })
 
 test('should request to fetch all cars', () => {

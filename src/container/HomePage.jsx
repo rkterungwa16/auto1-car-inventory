@@ -16,6 +16,7 @@ class HomePage extends React.Component {
     this.state = {
       cars: [],
       colors: [],
+      currentPage: 1,
       isGettingCars: false,
       manufacturers: [],
       selectedColor: '',
@@ -37,6 +38,12 @@ class HomePage extends React.Component {
       this.setState({
         cars: nextProps.cars.cars,
         totalPageCount: nextProps.cars.totalPageCount
+      })
+    }
+
+    if (nextProps.cars.currentPage !== this.props.cars.currentPage) {
+      this.setState({
+        currentPage: nextProps.cars.currentPage
       })
     }
 
@@ -129,7 +136,8 @@ class HomePage extends React.Component {
       manufacturers,
       colors,
       totalPageCount,
-      isGettingCars
+      isGettingCars,
+      currentPage
     } = this.state
 
     if (isGettingCars) {
@@ -154,6 +162,8 @@ class HomePage extends React.Component {
             totalPageCount={totalPageCount}
             getSortFilterParams={this.getSortFilterParams.bind(this)}
             getPageParams={this.getPageParams.bind(this)}
+            currentPage={currentPage}
+            changePageNumber={this.props.carsActions.changePageNumber}
           />
 
         </div>
@@ -167,6 +177,7 @@ const mapStateToProps = state => {
   return {
     cars: state.cars,
     totalPageCount: state.cars.totalPageCount,
+    currentPage: state.cars.currentPage,
     colors: state.colors,
     manufacturers: state.manufacturers
   }

@@ -60,6 +60,7 @@ exports[`should render AvailableCarsArea correctly 1`] = `
     stockNumber={100}
   />
   <Pagination
+    currentPage={1}
     getPageParams={[MockFunction]}
     totalPageCount={100}
   />
@@ -126,6 +127,7 @@ exports[`should render AvailableCarsArea with alt data correctly 1`] = `
     stockNumber={100}
   />
   <Pagination
+    currentPage={1}
     getPageParams={[MockFunction]}
     totalPageCount={100}
   />

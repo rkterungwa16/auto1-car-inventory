@@ -10,13 +10,20 @@ import {
   ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
   REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
   REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
-  REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED
+  REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED,
+  PAGE_NUMBER_CHANGED
 } from '../constants'
 
 import { getCarsApi, getSingleCarApi } from '../utils/cars'
 import { handleError } from '../utils/fetch'
 import { addFavoriteCarAsync, removeFromFavoriteCarAsync } from '../helpers'
 
+export function changePageNumber (currentPage) {
+  return {
+    type: PAGE_NUMBER_CHANGED,
+    payload: currentPage
+  }
+}
 export function getCarsRequest () {
   return {
     type: FETCH_ALL_CARS_REQUESTED

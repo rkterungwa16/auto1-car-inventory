@@ -31,7 +31,9 @@ class AvailableCarsArea extends React.Component {
   render () {
     const {
       cars,
-      totalPageCount
+      totalPageCount,
+      currentPage,
+      changePageNumber
     } = this.props
     return (
       <div className='available-cars-container'>
@@ -54,6 +56,8 @@ class AvailableCarsArea extends React.Component {
         <Pagination
           getPageParams={this.props.getPageParams}
           totalPageCount={totalPageCount}
+          currentPage={currentPage}
+          changePageNumber={changePageNumber}
         />
       </div>
     )

@@ -14,7 +14,8 @@ import {
   removeFavoriteCarFailure,
   removeFavoriteCarRequest,
   removeFavoriteCarSuccess,
-  getSingleCar
+  getSingleCar,
+  changePageNumber
 } from '../../actions/cars'
 
 import * as types from '../../constants'
@@ -57,6 +58,11 @@ test('should successfully get cars', () => {
   const action = getCarsSuccess(['jeep'])
   expect(action.type).toEqual('FETCH_ALL_CARS_SUCCEEDED')
   expect(action.payload).toEqual(['jeep'])
+})
+
+test('should change the page number', () => {
+  const action = changePageNumber()
+  expect(action.type).toEqual('PAGE_NUMBER_CHANGED')
 })
 
 test('should make request to get cars', () => {

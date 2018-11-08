@@ -8,12 +8,16 @@ Enzyme.configure({ adapter: new Adapter() })
 const { shallow } = Enzyme
 let getPageParams
 let wrapper
+let changePageNumber
 beforeEach(() => {
   getPageParams = jest.fn()
+  changePageNumber = jest.fn()
   wrapper = shallow(
     <Pagination
       getPageParams={getPageParams}
       totalPageCount={100}
+      currentPage={1}
+      changePageNumber={changePageNumber}
     />
   )
 })
@@ -29,30 +33,41 @@ test('should render Pagination with alt data correctly', () => {
 })
 
 test('should increase the current page by 1', () => {
+  wrapper.setProps({
+    currentPage: 1
+  })
   const instance = wrapper.instance()
-  expect(wrapper.state('currentPage')).toBe(1)
   instance.nextPage()
-  expect(wrapper.state('currentPage')).toBe(2)
+  expect(changePageNumber).toHaveBeenCalled()
+  expect(getPageParams).toHaveBeenCalled()
 })
 
 test('should decrease the current page by 1', () => {
+  wrapper.setProps({
+    currentPage: 10
+  })
   const instance = wrapper.instance()
-  expect(wrapper.state('currentPage')).toBe(1)
-  instance.nextPage()
   instance.previousPage()
-  expect(wrapper.state('currentPage')).toBe(1)
+  expect(changePageNumber).toHaveBeenCalled()
+  expect(getPageParams).toHaveBeenCalled()
 })
 
 test('should skip to the first page', () => {
+  wrapper.setProps({
+    currentPage: 1
+  })
   const instance = wrapper.instance()
-  expect(wrapper.state('currentPage')).toBe(1)
   instance.firstPage()
-  expect(wrapper.state('currentPage')).toBe(1)
+  expect(changePageNumber).toHaveBeenCalled()
+  expect(getPageParams).toHaveBeenCalled()
 })
 
 test('should skip to the last page', () => {
+  wrapper.setProps({
+    currentPage: 100
+  })
   const instance = wrapper.instance()
-  expect(wrapper.state('currentPage')).toBe(1)
   instance.lastPage()
-  expect(wrapper.state('currentPage')).toBe(100)
+  expect(changePageNumber).toHaveBeenCalled()
+  expect(getPageParams).toHaveBeenCalled()
 })
