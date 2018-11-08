@@ -55,9 +55,6 @@ class AvailableCarsArea extends React.Component {
           getPageParams={this.props.getPageParams}
           totalPageCount={totalPageCount}
         />
-        <footer className='footer'>
-          <p className='footer__text'>© AUTO1 Group 2018</p>
-        </footer>
       </div>
     )
   }

@@ -63,15 +63,6 @@ exports[`should render AvailableCarsArea correctly 1`] = `
     getPageParams={[MockFunction]}
     totalPageCount={100}
   />
-  <footer
-    className="footer"
-  >
-    <p
-      className="footer__text"
-    >
-      © AUTO1 Group 2018
-    </p>
-  </footer>
 </div>
 `;
 
@@ -138,14 +129,5 @@ exports[`should render AvailableCarsArea with alt data correctly 1`] = `
     getPageParams={[MockFunction]}
     totalPageCount={100}
   />
-  <footer
-    className="footer"
-  >
-    <p
-      className="footer__text"
-    >
-      © AUTO1 Group 2018
-    </p>
-  </footer>
 </div>
 `;

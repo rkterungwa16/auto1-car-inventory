@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Header from '../components/Header'
-// import Footer from '../components/Footer'
+import Footer from '../components/Footer'
 import CarFiltersArea from '../components/CarFiltersArea'
 import AvailableCarsArea from '../components/AvailableCarsArea'
 import * as carsActions from '../actions/cars'
@@ -138,7 +138,7 @@ class HomePage extends React.Component {
       )
     }
     return (
-      <div>
+      <div className='container-wrapper'>
         <Header />
         <div className='container'>
           <CarFiltersArea
@@ -155,7 +155,9 @@ class HomePage extends React.Component {
             getSortFilterParams={this.getSortFilterParams.bind(this)}
             getPageParams={this.getPageParams.bind(this)}
           />
+
         </div>
+        <Footer />
       </div>
     )
   }
