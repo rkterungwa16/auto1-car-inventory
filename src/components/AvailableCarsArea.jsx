@@ -1,4 +1,5 @@
 import React from 'react'
+import uniqId from 'uniqid'
 
 import AvailableCar from './AvailableCar'
 import Pagination from './Pagination'
@@ -16,7 +17,7 @@ class AvailableCarsArea extends React.Component {
       } = car
       return (
         <AvailableCar
-          key={stockNumber}
+          key={uniqId()}
           stockNumber={stockNumber}
           mileage={mileage}
           fuelType={fuelType}
@@ -32,7 +33,6 @@ class AvailableCarsArea extends React.Component {
       cars,
       totalPageCount
     } = this.props
-
     return (
       <div className='available-cars-container'>
         <div className='available-cars__top--text'>
